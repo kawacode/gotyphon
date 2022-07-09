@@ -1,5 +1,5 @@
 # gotyphon
-gotyphon is a library that helps you to make requests using any type of proxy with custom ja3, it supports http2 and http1. This project is made as alternative to CycleTLS
+Gotyphonlib is a library which allows you to request using any proxy type with http1 and http2, it also allows you to customize ja3 string and comes with a lot more feature. This project is created as alternative to Cycletls
 
 # 🚀 Features
 
