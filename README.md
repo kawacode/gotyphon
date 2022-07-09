@@ -18,6 +18,10 @@ gotyphon is a library that helps you to make requests using any type of proxy wi
 - Proxy support (SOCKS4/SOCKS4a, HTTP/s, SOCKS5)
 - Ja3 Customization
 - HTTP/2 and HTTP1 Support
+## How to install it?
+```
+go get github.com/kawacode/gotyphon
+```
 ## How to use it?
 ### HTTP request using gotyphon without proxy or Ja3 customization
 ```go
