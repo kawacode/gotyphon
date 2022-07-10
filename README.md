@@ -18,6 +18,8 @@ Gotyphonlib is a library which allows you to request using any proxy type with h
 - Proxy support (SOCKS4/SOCKS4a, HTTP/s, SOCKS5)
 - Ja3 Customization
 - HTTP/2 and HTTP1 Support
+- HTTP2 Setting customization
+- HTTP1 Setting customization
 ## How to install it?
 ```
 go get github.com/kawacode/gotyphon
