@@ -3,7 +3,8 @@ Gotyphonlib is a library which allows you to request using any proxy type with h
 
 # 🚀 Features
 
-## Block
+```markdown
+🧱 Blocks
 - Map_string_slice_int_tools
 - OStools
 - Randomtools (Ja3 ranoomizer, header randomizer, Order randomizer etc)
@@ -12,19 +13,20 @@ Gotyphonlib is a library which allows you to request using any proxy type with h
 - Delay function
 - Parse between two strings
 
-## HTTPRequest Funtcion
-- [High-performance](#-performance) Built-in goroutine pool used for handling asynchronous requests
-- Custom header ordering via [fhttp](https://github.com/useflyent/fhttp)
+🌐 HTTPRequest Funtcion
+- [High-performance] Built-in goroutine pool used for handling asynchronous requests
+- Custom header ordering via https://github.com/useflyent/fhttp
 - Proxy support (SOCKS4/SOCKS4a, HTTP/s, SOCKS5)
 - Ja3 Customization
 - HTTP/2 and HTTP1 Support
 - HTTP2 Setting customization
 - HTTP1 Setting customization
-## How to install it?
+```
+# ⬇️ How to install it?
 ```
 go get github.com/kawacode/gotyphon
 ```
-## How to use it?
+# 🪧 How to use it?
 ### HTTP request using gotyphon without proxy or Ja3 customization
 ```go
 package main
