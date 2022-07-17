@@ -5,13 +5,88 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math/rand"
+	"net/http"
 	"os"
+	"os/exec"
 	"strings"
 	"time"
 
 	browser "github.com/EDDYCJY/fake-useragent"
 	"github.com/google/uuid"
+	"golang.org/x/exp/slices"
 )
+
+// Delete a slice of uint16s from a slice of uint16s
+func DeleteFromIntSlice(slice []uint16, start int, end int) {
+	slices.Delete(slice, start, end)
+}
+
+// It takes a map of string slices and returns a pointer to an http.Header
+func MapStringSlicesToHttpHeaders(headers map[string][]string) *http.Header {
+	var result = http.Header{}
+	for key, value := range headers {
+		for _, v := range value {
+			http.Header.Add(result, key, v)
+		}
+	}
+	return &result
+}
+
+// > Converts a map of strings to a map of string slices
+func MapStringToMapStringSlice(MapString map[string]string, bot *BotData) map[string][]string {
+	var result = make(map[string][]string)
+	for key, value := range MapString {
+		result[key] = []string{value}
+	}
+	if len(bot.HttpRequest.Request.HeaderOrderKey) > 0 {
+		result["Header-Order:"] = bot.HttpRequest.Request.HeaderOrderKey
+	}
+	if len(bot.HttpRequest.Request.PHeaderOrderKey) > 0 {
+		result["PHeader-Order:"] = bot.HttpRequest.Request.PHeaderOrderKey
+	}
+	return result
+}
+// Delay pauses the program for a given number of seconds.
+func Delay(seconds time.Duration) {
+	time.Sleep(seconds * time.Second)
+}
+
+// It takes a string, and two other strings, and returns the string between the two other strings.
+func Parse(str string, left string, right string) string {
+	return strings.Split(strings.Split(str, left)[1], right)[0]
+}
+
+// It takes a command name and a list of arguments and returns the output of the command as a string
+// and an error
+func Executecommand(name string, arg ...string) (string, error) {
+	cmd := exec.Command(name, arg...)
+	stdout, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+	return string(stdout), nil
+}
+
+// Convert a map of string slices to a map of strings.
+func MapStringSliceToMapString(headers map[string][]string) map[string]string {
+	var result = make(map[string]string)
+	for key, value := range headers {
+		for _, value := range value {
+			result[key] = value
+		}
+	}
+	return result
+}
+
+// It takes a slice of uint16s, creates a new random number generator, and then iterates over the
+// slice, swapping the current element with a random element in the slice
+func ShuffleSlice(slice []uint16) {
+	r := rand.New(rand.NewSource(time.Now().Unix()))
+	for n := len(slice); n > 0; n-- {
+		randIndex := r.Intn(n)
+		slice[n-1], slice[randIndex] = slice[randIndex], slice[n-1]
+	}
+}
 
 // RandomizeHeaders takes a map of headers and a slice of headers to skip, and returns a map of
 // randomized headers
